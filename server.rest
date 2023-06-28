@@ -1,0 +1,60 @@
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+	"firstName": "gogo",
+    "lastName": "Oshiga",
+    "type": "consumer"
+}
+
+###
+
+GET http://localhost:3000/users/d8513186a836458fb1eb1700d5ff1f51
+
+
+###
+
+
+GET http://localhost:3000/users
+###
+
+DELETE  http://localhost:3000/users/c869774afbfa4ffb97fade90c12c5cf7
+###
+
+POST   http://localhost:3000/login/94200dd864894e89a22ff3134a874926
+###
+
+POST  http://localhost:3000/room/initiate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
+
+{
+    "userIds": ["62da4e29ff554176bec7745fc7d331b7"],
+    "type": "consumer-to-consumer"
+    
+}
+###
+
+POST http://localhost:3000/room/9bae87c843e24854894e989c5e8c3476/message
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
+
+{
+    "messageText": "heyplayer"
+}
+
+
+###
+
+GET http://localhost:3000/room/9bae87c843e24854894e989c5e8c3476
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
+
+###
+
+GET http://localhost:3000/room
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
+
+

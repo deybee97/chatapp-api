@@ -5,8 +5,8 @@ import user from '../controllers/user.js';
 const router = express.Router();
 
 router
-  .get('/', user.onGetAllUsers)
-  .post('/', user.onCreateUser)
+  .get('/', user.onGetAllUsers)//done
+  .post('/', user.onCreateUser) //done
   .get('/:id', user.onGetUserById)
   .delete('/:id', user.onDeleteUserById)
 

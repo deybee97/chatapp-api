@@ -10,12 +10,19 @@ export const encode = async (req, res, next) => {
 
   
     try {
-      const { userId } = req.params;
-      const user = await UserModel.getUserById(userId);
+      // const { userId } = req.params;
+      // const regex = /^\/([a-zA-Z0-9]+)/
+      // const path = req.path.match(regex)[1];
+
+      // const user =  path === 'login' ? await UserModel.getUserById(userId) : req.user;
+
+      const user = req.user;
+      
       const payload = {
         userId: user._id,
         userType: user.type,
       };
+      
       const authToken = jwt.sign(payload, SECRET_KEY);
       console.log('Auth', authToken);
       req.authToken = authToken;

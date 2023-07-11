@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
+
 export const USER_TYPES = {
   CONSUMER: "consumer",
   SUPPORT: "support",
@@ -14,6 +15,8 @@ const userSchema = new mongoose.Schema(
     },
     firstName: String,
     lastName: String,
+    userName: String,
+    password: String,
     type: String,
   },
   {
@@ -22,11 +25,14 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.statics.createUser = async function (firstName, lastName, type) {
+userSchema.statics.createUser = async function (firstName, lastName, userName, password, type) {
 
     try {
-        const user = await this.create({ firstName, lastName, type });
-        return user;
+        const user = await this.create({ firstName, lastName, userName, password, type });
+        return {
+          ...user,
+          password: "password"
+        };
       } catch (error) {
         throw error;
       }
@@ -49,10 +55,48 @@ userSchema.statics.getUserById = async function (id){
 
 }
 
+userSchema.statics.getUserByUserName = async function (userName){
+  try {
+
+    const user =  await this.findOne({ userName})
+    
+    if(!user){
+      // throw ({ error: 'No user with this username found' });
+      return false
+    }
+    return user
+    
+  } catch (error) {
+     throw error
+  }
+}
+
+// userSchema.statics.confirmUsernameAndPassword = async function (userName, password){
+//  console.log(userName, password)
+// try {
+   
+//   const user = await this.findOne({
+//     userName,
+//     password
+//   })
+//   console.log(user)
+
+//   if(!user){
+//     throw ({error: 'username doesnt exist or password not found'})
+//   }
+
+//   return user
+  
+// } catch (error) {
+//   throw error
+// }
+
+// }
+
 userSchema.statics.getAllUsers = async function (){
 
    try {
-    const users = await this.find()
+    const users = await this.find().select(['_id','firstname'])
     return users
    } catch (error) {
      throw error

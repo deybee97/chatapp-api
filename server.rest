@@ -22,9 +22,30 @@ GET http://localhost:3000/users
 DELETE  http://localhost:3000/users/c869774afbfa4ffb97fade90c12c5cf7
 ###
 
-POST   http://localhost:3000/login/94200dd864894e89a22ff3134a874926
+POST   http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "userName": "Deybee",
+    "password": "intituition"
+
+}
+
+
 ###
 
+POST   http://localhost:3000/signup
+Content-Type: application/json
+
+{
+	"firstName": "adebola",
+    "lastName": "Aderemi",
+    "userName": "Deybee",
+    "password": "intituition",
+    "type": "consumer"
+}
+###eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODg1NjA4MDV9.D1bvlFDbPgdjY6cHWrJYfKoU6fHJS3SOszWoywssjuo
+###
 POST  http://localhost:3000/room/initiate
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM

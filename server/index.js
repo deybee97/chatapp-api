@@ -27,9 +27,10 @@ import { decode } from '../middlewares/jwt.js'
 const app = express()
 
 
-const port = process.env.PORT || "3000"
+const port = process.env.PORT || "3001"
 
 app.set("port", port)
+app.use(cors({origin:'http://localhost:19006'}))
 app.use(express.json())
 app.use("/", indexRouter);
 app.use("/users", userRouter);

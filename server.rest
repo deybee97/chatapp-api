@@ -1,16 +1,18 @@
 
-POST http://localhost:3000/users
+POST http://localhost:3001/users
 Content-Type: application/json
 
 {
-	"firstName": "gogo",
-    "lastName": "Oshiga",
-    "type": "consumer"
+	"firstName": "user1",
+    "lastName": "montana",
+    "type": "consumer",
+    "userName": "user1",
+    "password":"taliban"
 }
 
 ###
 
-GET http://localhost:3000/users/d8513186a836458fb1eb1700d5ff1f51
+GET http://localhost:3001/users/d8513186a836458fb1eb1700d5ff1f51
 
 
 ###
@@ -34,19 +36,19 @@ Content-Type: application/json
 
 ###
 
-POST   http://localhost:3000/signup
+POST   http://localhost:3001/signup
 Content-Type: application/json
 
 {
 	"firstName": "adebola",
     "lastName": "Aderemi",
-    "userName": "Deybee",
+    "userName": "Deybeeee",
     "password": "intituition",
     "type": "consumer"
 }
 ###eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODg1NjA4MDV9.D1bvlFDbPgdjY6cHWrJYfKoU6fHJS3SOszWoywssjuo
 ###
-POST  http://localhost:3000/room/initiate
+POST  http://localhost:3001/room/initiate
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
 
@@ -57,7 +59,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwM
 }
 ###
 
-POST http://localhost:3000/room/9bae87c843e24854894e989c5e8c3476/message
+POST http://localhost:3001/room/9bae87c843e24854894e989c5e8c3476/message
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
 
@@ -68,7 +70,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwM
 
 ###
 
-GET http://localhost:3000/room/9bae87c843e24854894e989c5e8c3476
+GET http://localhost:3001/room/9bae87c843e24854894e989c5e8c3476
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NDIwMGRkODY0ODk0ZTg5YTIyZmYzMTM0YTg3NDkyNiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE2ODc0MjU1OTZ9.H1jMMU28VuRMQYtems9TPXbIkschEeoxN_sy2r_PzLM
 

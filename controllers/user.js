@@ -5,10 +5,13 @@ import UserModel, { USER_TYPES } from '../models/User.js';
 
 import passwordUtil from '../utils/password.js'
 import User from '../models/User.js';
+import onValidateUsername from '../utils/validate-user.js';
 
 
 
 const onCreateUser = async (req, res, next) => {
+
+  
 
   try {
     const validation = makeValidation(types => ({
@@ -28,9 +31,16 @@ const onCreateUser = async (req, res, next) => {
     const hashedPassword = await passwordUtil.encodePassword(password)
     
 
-    await onValidateUsername(req,res)
+    const isUniqueUsername = await onValidateUsername(userName)
+    
+      
+     if(!isUniqueUsername){
+      
+      return res.status(409).json({success:false, error: "user already exists"})
+     }
 
     const user = await UserModel.createUser(firstName, lastName, userName, hashedPassword, type);
+    console.log(user, "createUser")
     // return res.status(200).json({ success: true, user });
     req.user = user 
 
@@ -41,19 +51,20 @@ const onCreateUser = async (req, res, next) => {
 
  }
 
- const onValidateUsername = async (req,res) => {
+//  const onValidateUsername = async (req,res) => {
 
-  try {
+//   try {
 
-    const user = UserModel.getUserByUserName(req.body.userName)
-    if(user){
-      return res.status(409).json({success:false, error: "user already exists"})
-    }
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    return res.status(500).json({ success: false, error: error })
-  }
- }
+//     const user = UserModel.getUserByUserName(req.body.userName)
+    
+//     if(user){
+//       return res.status(409).json({success:false, error: "user already exists"})
+//     }
+//     return res.status(200).json({ success: true });
+//   } catch (error) {
+//     return res.status(500).json({ success: false, error: error })
+//   }
+//  }
  
  const onGetUserById = async (req, res) => { 
     
@@ -123,7 +134,7 @@ const onCreateUser = async (req, res, next) => {
       req.user = user 
 
       next()
-      
+       
       
     } catch (error) {
       console.log(error)

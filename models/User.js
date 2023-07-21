@@ -15,8 +15,12 @@ const userSchema = new mongoose.Schema(
     },
     firstName: String,
     lastName: String,
-    userName: String,
+    userName: {
+      type: String,
+      unique: [true, 'username already exists'],
+    },
     password: String,
+    
     type: String,
   },
   {
@@ -29,10 +33,7 @@ userSchema.statics.createUser = async function (firstName, lastName, userName, p
 
     try {
         const user = await this.create({ firstName, lastName, userName, password, type });
-        return {
-          ...user,
-          password: "password"
-        };
+        return user
       } catch (error) {
         throw error;
       }
@@ -96,7 +97,7 @@ userSchema.statics.getUserByUserName = async function (userName){
 userSchema.statics.getAllUsers = async function (){
 
    try {
-    const users = await this.find().select(['_id','firstname'])
+    const users = await this.find().select({_id:1, firstName:1, lastName:1})
     return users
    } catch (error) {
      throw error

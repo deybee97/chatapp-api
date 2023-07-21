@@ -10,6 +10,7 @@ const  initiate = async (req, res) => {
   console.log(req.body)
   
   try {
+    
     const validation = makeValidation(types => ({
       payload: req.body,
       checks: {
@@ -21,8 +22,9 @@ const  initiate = async (req, res) => {
       }
     }));
     
-    if (!validation.success) return res.status(400).json({ ...validation });
 
+    if (!validation.success) return res.status(400).json({ ...validation });
+   
     const { userIds, type } = req.body;
     const { userId: chatInitiator } = req;
     const allUserIds = [...userIds, chatInitiator];
@@ -38,6 +40,7 @@ const postMessage = async (req, res) => {
 
   try {
     const { roomId } = req.params;
+    console.log(roomId, "postmesssage")
     const validation = makeValidation(types => ({
       payload: req.body,
       checks: {
@@ -53,10 +56,10 @@ const postMessage = async (req, res) => {
     const post = await ChatMessageModel.createPostInChatRoom(roomId, messagePayload, currentLoggedUser);
     
   
-    global.io.sockets.in(roomId).emit('new message', { message: post });
+    global.io.sockets.to(roomId).emit('new message', { message: post });
     return res.status(200).json({ success: true, post });
   } catch (error) {
-    console.log("entered")
+    console.log(error.message)
     return res.status(500).json({ success: false, error: error.message })
   }
 }

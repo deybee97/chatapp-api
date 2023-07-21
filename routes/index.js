@@ -11,14 +11,18 @@ router
      
     return res.status(200).json({
       success: true,
-      authorization: req.authToken
+      authorization: req.authToken,
+      userId: req.user._id
     })
   })
   .post('/signup', users.onCreateUser, encode, (req,res) => {
 
+
+
     return res.status(200).json({
       success: true,
-      authorization: req.authToken
+      authorization: req.authToken,
+      userId: req.user._id
     })
   })
   .post('/validateUsername', users.onValidateUsername)

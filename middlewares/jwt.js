@@ -34,8 +34,13 @@ export const encode = async (req, res, next) => {
   
   export const decode = (req, res, next) => {
     
+
+    
   
     if (!req.headers['authorization']) {
+
+      console.log('No access token provided')
+     
       return res.status(400).json({ success: false, message: 'No access token provided' });
     }
     const accessToken = req.headers.authorization.split(' ')[1];
@@ -47,7 +52,7 @@ export const encode = async (req, res, next) => {
       
       return next();
     } catch (error) {
-  
+      console.log(error)
       return res.status(401).json({ success: false, message: error.message });
     }
   }
